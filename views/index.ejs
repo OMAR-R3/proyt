@@ -1,0 +1,33 @@
+<%- include("templates/encabezado1") %>
+
+<% if(user){ %>
+  <span class="badge bg-success"><%= user.name %></span>
+  <span class="badge bg-success"><%= user.pass %></span>
+<% } %>
+
+      <section>
+        <h1>Welcome to MyCat Worbench</h1>
+        <form action="/crear" method="POST" id="formularioBD">
+          <h2><label >Nombre de la base de datos:</label></h2>
+          <div class="buscador">
+            <span class="ocultar errorNombre">Nombre no valido</span>
+            <i class="ocultar xmarkErrorNombre fa-regular fa-circle-xmark"></i>
+            <i class="ocultar checkMarkNombre fa-regular fa-circle-check"></i>
+            <input type="text" id="nombreBD" name="nombreBD" placeholder="Ingresa nombre Base de datos" required>
+            <button type="submit" class="button">Crear</button>
+          </div>
+        </form>
+          <div class="wave wave1"></div>
+          <div class="wave wave2"></div>
+          <div class="wave wave3"></div>
+          <div class="wave wave4"></div>
+      
+             
+  <h4>Bases de datos existentes</h4>
+  <!--=== DATABASE LIST ========-->
+  <div class="main-container">
+    <a href="/main">ir a main</a>
+      
+      </section>
+
+  <%- include("templates/pie1") %>

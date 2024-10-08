@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/CSS/estiloInsertar.css">
+    <script src="http://localhost:3000/JS/scriptModificarTab.js" defer></script>
+    <link href="http://localhost:3000/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:3000/css/signin.css" rel="stylesheet">
+    <link href="http://localhost:3000/css/styles.css" rel="stylesheet">
+    <title>Modificar Fila</title>
+</head>
+
+<body>
+
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Sistema Gestor de Base de Datos</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="button" class="px-3 btn btn-danger" href="logout">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="regis" class="regis2">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <form action="/insersionTB" method="POST">
+                            <input type="hidden" name="nBD" value="<%= nBD %>">
+                            <input type="hidden" name="nTB" value="<%= nTB %>">
+        
+                            <input type="submit" class="w-100 btn btn-lg btn-bd-primary" value="Regresar">
+                        </form><br>
+
+                    </div>
+                </nav>
+            </div>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="menul">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <h2>Bienvenido:</h2>
+                    <% if(user){ %>
+                        <span class="badge bg-success" id="msj2">
+                            <%= user.name %>
+                        </span>
+                        <% } %>
+                </div>
+
+
+                <div class="box">
+                    <h1>Modificar Fila en: <%= nBD %>
+                    </h1>
+                    <h1>Modificar Tabla de: <%= nTB %>
+                    </h1>
+                    <% if (error) { %>
+                        <!-- Aquí puedes mostrar algún mensaje de error si es necesario -->
+                        <% } %>
+                            <form action="/modificarFila" method="POST">
+
+                                <input type="hidden" name="nBD" value="<%= nBD %>">
+                                <input type="hidden" name="nTB" value="<%= nTB %>">
+                                <input type="hidden" name="id" value="<%= fila.id %>">
+                                <!-- Asegúrate de que este nombre de columna sea correcto -->
+                                <% columns.forEach(column=> { %>
+                                    <% if (column.name !=='id' ) { %> <!-- Ocultar la columna primaria -->
+                                        <div>
+                                            <label for="<%= column.name %>">
+                                                <%= column.name %>
+                                            </label>
+                                            <span class="ocultar errorNombre">Nombre no válido</span>
+                                            <i class="ocultar xmarkErrorNombre fa-regular fa-circle-xmark"></i>
+                                            <i class="ocultar checkMarkNombre fa-regular fa-circle-check"></i>
+                                            <input type="text" name="columns[<%= column.name %>]"
+                                                id="<%= column.name %>" value="<%= fila[column.name] %>"
+                                                placeholder="Ingresa la corrección" required>
+                                        </div>
+                                        <% } %>
+                                            <% }); %>
+                                                <button type="submit">Actualizar</button>
+                            </form>
+                </div>
+</body>
+
+</html>

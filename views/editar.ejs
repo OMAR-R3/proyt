@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="http://localhost:3000/css/estiloEditar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="http://localhost:3000/JS/scriptBlur.js" defer></script>
+  <script src="http://localhost:3000/JS/scriptBlurEditar.js" defer></script>
+  <title>Home</title>
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/signin.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Sistema Gestor de Base de Datos</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="button" class="px-3 btn btn-danger" href="logout">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div  class="regis2">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <a href="/" type="button" class="w-100 btn btn-lg btn-bd-primary">Regresar</a> <br><br>
+            <a href="/register" type="button" class="w-100 btn btn-lg btn-bd-primary" id="regis">Registrar</a>
+
+          </div>
+        </nav>
+      </div>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="menul">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Dashboard</h1>
+          <h2>Bienvenido:</h2>
+          <% if(user){ %>
+            <span class="badge bg-success" id="msj">Funciones de <%= user.rol %> activadas para: <%= user.name %></span>
+            <span class="badge bg-success" id="msj2">
+              <%= user.name %>
+            </span>
+            <% } %>
+        </div>
+
+        <% if(user){ %>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () { // Asegúrate de que el DOM esté completamente cargado
+              const rol = "<%= user.rol %>";
+
+              switch (rol) {
+                case "admin":
+                  document.getElementById('msj').style.display = 'true';
+                  document.getElementById('msj2').style.display = 'none';
+                  const elemento = document.getElementById('menul');
+                  if (elemento) {
+                    elemento.classList.add('ms-sm-auto');
+                  }
+                  break;
+                case "user":
+                  document.getElementById('msj').style.display = 'none';
+                  document.getElementById('regis').style.display = 'none';
+                  document.getElementById('creartb').style.display = 'none';
+                  const elemento3 = document.getElementsByClassName('ocults');
+                  Array.from(elemento3).forEach(elemento => {
+                    elemento.style.display = 'none';
+                  });
+                  break;
+                default:
+                  document.body.style.backgroundColor = "white";
+                  break;
+              }
+            });
+          </script>
+
+          <% } %>
+
+            <div class="box">
+              <form action="/crearTabla" method="POST" id="formularioTabla">
+                <input type="hidden" name="nBD" value="<%= nBD %>">
+                <h1>Base de datos (modificando): <%= nBD %>
+                </h1>
+                <div id="creartb">
+                  <h1>Crear Nueva Tabla</h1>
+
+                  <label>Nombre de la Tabla:</label>
+                  <span class="ocultar errorNombreTabla">Nombre no válido</span>
+                  <i class="ocultar xmarkErrorNombreTabla fa-regular fa-circle-xmark"></i>
+                  <i class="ocultar checkMarkNombreTabla fa-regular fa-circle-check"></i>
+                  <input type="text" name="ntabla" id="ntabla" placeholder="Ingresa nombre de la tabla" required
+                    autofocus>
+
+                  <br><br>
+                  <div id="columns">
+                    <div class="column">
+                      <div>
+                        <label>Nombre de la Columna:</label>
+                        <span class="ocultar errorNombreColumna">Nombre no válido</span>
+                        <i class="ocultar xmarkErrorNombreColumna fa-regular fa-circle-xmark"></i>
+                        <i class="ocultar checkMarkNombreColumna fa-regular fa-circle-check"></i>
+                        <input type="text" name="columns[0][name]" id="columns[0][name]"
+                          placeholder="Ingresa nombre de la columna" required>
+                      </div>
+                      <div>
+                        <label>Tipo de Dato:</label>
+                        <select name="columns[0][type]" required>
+                          <option value="INT">INT</option>
+                          <option value="VARCHAR(255)">VARCHAR(255)</option>
+                          <option value="FLOAT">FLOAT</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label>Primaria:</label>
+                        <input type="checkbox" name="columns[0][isPrimary]">
+                      </div>
+                      <button type="button" class="remove-button" onclick="removeColumn(this)">Eliminar Columna</button>
+                    </div>
+                  </div>
+                  <div class="button-group">
+                    <button type="button" onclick="addColumn()">Agregar Columna</button>
+                    <button type="submit">Crear Tabla</button>
+                  </div>
+              </form>
+            </div>
+    </div>
+    <div class="cajonsin">
+      <h2>Tablas existentes</h2>
+      <ul class="database-list">
+        <% tables.forEach(function(table) { %>
+          <li class="database-item">
+            <div class="database-item__box">
+              <span class="database-item__name">
+                <%= table %>
+              </span>
+              <form action="/insersionTB" method="POST">
+                <input type="hidden" name="nBD" value="<%= nBD %>">
+                <input type="hidden" name="nTB" value="<%= table %>">
+
+                <% if(user){ %>
+                  <input type="hidden" name="name" value="<%= user.name %>">
+                  <input type="hidden" name="rol" value="<%= user.rol %>">
+                  <% } %>
+                    <button type="submit" class="button">Ver Tabla</button>
+              </form>
+
+              <div class="database-item__actions ocults">
+                <form action="/editarTB" method="POST">
+                  <input type="hidden" name="nBD" value="<%= nBD %>">
+                  <input type="hidden" name="nTB" value="<%= table %>">
+                  <button type="submit" class="button">Editar Tabla</button>
+                </form>
+                <form action="/eliminarTB" method="POST">
+                  <input type="hidden" name="nBD" value="<%= nBD %>">
+                  <input type="hidden" name="nTB" value="<%= table %>">
+                  <button type="submit" class="button">Borrar Tabla</button>
+                </form>
+              </div>
+
+            </div>
+          </li>
+          <% }); %>
+      </ul>
+    </div>
+
+
+    <script>
+      var i = 0;
+
+      function addColumn() {
+        i++;
+        const columnsDiv = document.getElementById('columns');
+        const newColumnDiv = document.createElement('div');
+        newColumnDiv.className = 'column';
+        newColumnDiv.innerHTML = `
+          <div>
+              <label>Nombre de la Columna:</label>
+              <span class="ocultar errorNombreColumna">Nombre no válido</span>
+              <i class="ocultar xmarkErrorNombreColumna fa-regular fa-circle-xmark"></i>
+              <i class="ocultar checkMarkNombreColumna fa-regular fa-circle-check"></i>
+              <input type="text" name="columns[${i}][name]" id="columns[${i}][name]" placeholder="Ingresa nombre de la columna" required>
+          </div>
+          <div>
+              <label>Tipo de Dato:</label>
+              <select name="columns[${i}][type]" required>
+                  <option value="INT">INT</option>
+                  <option value="VARCHAR(255)">VARCHAR(255)</option>
+                  <option value="FLOAT">FLOAT</option>
+              </select>
+          </div>
+          <div>
+              <label>Primaria:</label>
+              <input type="checkbox" name="columns[${i}][isPrimary]">
+          </div>
+          <button type="button" class="remove-button" onclick="removeColumn(this)">Eliminar Columna</button>
+      `;
+        columnsDiv.appendChild(newColumnDiv);
+
+        // Agregar validación al nuevo input de columna
+        agregarValidacionNombreColumna(newColumnDiv.querySelector("input"));
+      }
+
+      function removeColumn(button) {
+        const columnDiv = button.parentNode;
+        columnDiv.parentNode.removeChild(columnDiv);
+      }
+
+      // Función para validar el nombre de una columna
+      function validarNombreColumna(input) {
+        var mensajeNombreColumna = input.parentElement.querySelector(".errorNombreColumna");
+        var xmarkErrorNombreColumna = input.parentElement.querySelector(".xmarkErrorNombreColumna");
+        var checkMarkNombreColumna = input.parentElement.querySelector(".checkMarkNombreColumna");
+
+        if (!regexNombreTabla.test(input.value)) {
+          mensajeNombreColumna.classList.remove("ocultar");
+          input.classList.add("errorInput");
+          input.classList.remove("correctoInput");
+          xmarkErrorNombreColumna.classList.remove("ocultar");
+          checkMarkNombreColumna.classList.add("ocultar");
+        } else {
+          mensajeNombreColumna.classList.add("ocultar");
+          input.classList.remove("errorInput");
+          input.classList.add("correctoInput");
+          xmarkErrorNombreColumna.classList.add("ocultar");
+          checkMarkNombreColumna.classList.remove("ocultar");
+        }
+      }
+
+      // Función para agregar la validación al evento blur de los inputs
+      function agregarValidacionNombreColumna(input) {
+        input.addEventListener("blur", function () {
+          validarNombreColumna(input);
+        });
+      }
+
+      // Agregar validación a las columnas existentes en el formulario
+      document.querySelectorAll("[id^='columns'][id$='[name]']").forEach(function (input) {
+        agregarValidacionNombreColumna(input);
+      });
+    </script>
+</body>
+
+</html>

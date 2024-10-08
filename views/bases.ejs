@@ -1,0 +1,88 @@
+<%- include("templates/encabezado1") %>
+
+  <% if(user){ %>
+
+    <script>
+      
+      document.addEventListener('DOMContentLoaded', function () { // Asegúrate de que el DOM esté completamente cargado
+        const rol = "<%= user.rol %>";
+
+        switch (rol) {
+          case "admin":
+            document.getElementById('msj').style.display = 'true';
+            document.getElementById('msj2').style.display = 'none';
+            const elemento = document.getElementById('menul');
+            if (elemento) {
+              elemento.classList.add('ms-sm-auto');
+            }
+            break;
+          case "user":
+            document.getElementById('msj').style.display = 'none';
+            document.getElementById('formularioBD').style.display = 'none';
+            document.getElementById('regis').style.display = 'none';
+            const elementos = document.getElementsByClassName('formborrarbd');
+            Array.from(elementos).forEach(elemento => {
+                elemento.style.display = 'none';
+            });
+            const elemento1 = document.getElementById('menul');
+            if (elemento1) {
+              elemento1.classList.remove('ms-sm-auto');
+            }
+            break;
+          default:
+            document.body.style.backgroundColor = "white";
+            break;
+        }
+      });
+    </script>
+    
+    <% } %>
+      <section>
+        <form action="/crear" method="POST" id="formularioBD">
+          <h2><label>Nombre de la base de datos:</label></h2>
+          <br>
+          <div class="buscador">
+            <span class="ocultar errorNombre">Nombre no valido</span>
+            <i class="ocultar xmarkErrorNombre fa-regular fa-circle-xmark"></i>
+            <i class="ocultar checkMarkNombre fa-regular fa-circle-check"></i>
+            <input type="text" id="nombreBD" name="nombreBD" placeholder="Ingresa nombre Base de datos" required>
+            <button type="submit" class="button">Crear</button>
+          </div>
+        </form>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+
+      </section>
+      <br>
+      <h4>Bases de datos existentes</h4>
+      <!--=== DATABASE LIST ========-->
+      <div class="main-container">
+
+        <ul class="database-list">
+          <% databases.forEach(function(db) { %>
+            <li class="database-item">
+              <div class="database-item__box">
+                <span class="database-item__name">
+                  <%= db.Database %>
+                </span>
+                <div class="database-item__actions">
+                  <form action="/editarBD" method="POST">
+                    <input type="hidden" name="nBD" value="<%= db.Database %>">
+                    <button type="submit" class="button">Editar</button>
+                  </form>
+                  <form action="/eliminarBD" method="POST" class="formborrarbd">
+                    <input type="hidden" name="nBD" value="<%= db.Database %>">
+                    <button type="submit" class="button">Borrar</button>
+                  </form>
+                </div>
+              </div>
+            </li>
+            <% }); %>
+        </ul>
+      </div>
+
+
+
+      <%- include("templates/pie1") %>

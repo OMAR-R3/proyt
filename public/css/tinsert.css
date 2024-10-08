@@ -1,0 +1,182 @@
+.englobd {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"] {
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #9C446A;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    width: 100px;
+}
+
+button[type="submit"]:hover {
+    background-color: #9C446A;
+}
+
+
+@media (max-width: 600px) {
+    .box {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"] {
+        font-size: 12px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+.errorNombre {
+    font-size: small;
+    color: red;
+}
+
+.errorInput {
+    background-color: rgb(225, 101, 149);
+    border: 2px solid red;
+}
+
+.correctoInput {
+    background-color: rgb(184, 232, 177);
+    border: 2px solid rgb(30, 255, 0);
+}
+
+.xmarkErrorNombreColumna {
+    color: red;
+}
+
+.checkMarkNombreColumna {
+    color: green;
+}
+
+.ocultar {
+    display: none;
+    visibility: hidden;
+}
+
+
+.Return {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+#returnForm {
+    margin: 0;
+}
+
+.btn-return {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #643957;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;/
+}
+
+.btn-return:hover {
+    background-color: #299d95;
+}
+
+.img-return {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.Returnbtn {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.btn-returnn {
+    background-color: #643957;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.img-returnn {
+    width: 24px;
+    height: auto;
+}
+
+.btn-returnn:hover {
+    background-color: #299d95;
+}

@@ -1,0 +1,282 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+    height: 100vh;
+  }
+
+  .box form {
+   
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #643957;
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    color:#e06071;
+  }
+
+  label {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  input[type="text"],
+  select {
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .column>div {
+    flex: 1;
+    margin-right: 5px;
+  }
+
+  .column>div:last-child {
+    margin-right: 0;
+  }
+
+  .remove-button {
+    width: 25%;
+    padding: 10px;
+    background-color: #9C446A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .remove-button:hover {
+    background-color: #9C446A;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .button-group button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #643957;
+    color: white;
+  }
+
+  .button-group button:hover {
+    background-color: #299d95;
+  }
+
+  .table-list {
+    margin-top: 20px;
+  }
+
+  .table-item {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .table-item__name {
+    font-weight: bold;
+  }
+
+  .table-item__actions {
+    margin-top: 10px;
+  }
+
+  .table-item__actions button {
+    margin-right: 10px;
+  }
+
+  .main-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+  }
+
+  .database-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .database-item {
+    margin: 0;
+  }
+
+  .database-item__box {
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .database-item__box .database-item__name {
+    margin-right: 10px;
+  }
+
+  .database-item__actions {
+    display: flex;
+    margin-left: 10px;
+  }
+
+  .database-item__action {
+    margin-left: 5px;
+  }
+
+  .button {
+    margin: 2px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e06071;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .box {
+    margin-top: 50px;
+  }
+
+
+  .arrow{
+    color: #e06071;
+    padding: 10px 20px;
+  }
+
+  .errorNombreTabla, .errorNombreColumna{
+    font-size: small;
+    color: red;
+  }
+  
+  .errorInput {
+    background-color: rgb(225, 101, 149);
+    border: 2px solid red;
+  }
+  
+  .correctoInput {
+    background-color: rgb(184, 232, 177);
+    border: 2px solid rgb(30, 255, 0);
+  }
+  
+  .xmarkErrorNombreTabla, .xmarkErrorNombreColumna{
+    color: red;
+  }
+  
+  .checkMarkNombreTabla, .checkMarkNombreColumna {
+    color: green;
+  }
+  
+  .ocultar {
+    display: none;
+    visibility: hidden;
+  }
+  
+
+  .Return {
+    text-align: center; 
+  }
+  
+  .btn-return {
+    display: inline-flex; 
+    align-items: center; 
+    padding: 10px 20px; 
+    background-color: #643957;
+    color: white; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    font-size: 16px;
+    font-weight: bold; 
+  }
+  
+  .btn-return:hover {
+    background-color: #299d95;
+  }
+  
+  .img-return {
+    width: 24px; 
+    height: 24px; 
+    margin-right: 8px; 
+  }
+  
+
+  /* Contenedor principal para flexbox */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  width: 100%;
+  max-width: 1200px; /* Ajusta según el tamaño máximo deseado del contenedor */
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilos para el box (lado izquierdo) */
+.box {
+  width: 45%; /* Ajusta el ancho según tus necesidades */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilos para el cajonsin (lado derecho) */
+.cajonsin {
+  width: 35%; /* Ajusta el ancho según tus necesidades */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.database-item__actions {
+  display: flex;
+  justify-content: flex-end; /* Alínea los botones a la derecha */
+  margin-top: 10px;
+}
+
+.database-item__actions button {
+  margin-left: 5px; /* Espacio entre los botones si están en línea */
+}
+
+.database-item__actions {
+  display: flex;
+  justify-content: center; /* Centra los botones */
+  margin-top: 10px;
+}

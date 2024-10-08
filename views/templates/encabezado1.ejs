@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/CSS/estiloBase.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="http://localhost:3000/JS/scriptBlur.js" defer></script>
+    <script src="http://localhost:3000/JS/scriptBlurEditar.js" defer></script>
+    <title>Home</title>
+    <!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/signin.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Sistema Gestor de Base de Datos</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="button" class="px-3 btn btn-danger" href="logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row" >
+    <div id="regis" class="regis2">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+
+        <a href="/register" type="button" class="w-100 btn btn-lg btn-bd-primary">Registrar</a>
+        
+      </div>
+    </nav>
+  </div>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="menul">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <h2>Bienvenido:</h2>
+        <% if(user){ %>
+          <span class="badge bg-success" id="msj">Funciones de <%= user.rol %> activadas para: <%= user.name %></span>
+          <span class="badge bg-success" id="msj2"><%= user.name %></span>
+        <% } %>
+      </div>
+    
+

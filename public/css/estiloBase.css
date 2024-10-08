@@ -1,0 +1,88 @@
+
+.main-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgb(255, 255, 255);
+}
+  
+  .database-list {
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .database-item {
+    margin: 0;
+  }
+  
+  .database-item__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f0f0f0f3;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button {
+  margin: 2px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9C446A;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  button:hover{
+    background-color:rgb(154, 53, 147);
+    color:aliceblue;
+}
+
+input {
+  padding: 8px 25px;
+  background-color: rgb(249, 216, 247);
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid rgb(211, 129, 186);  
+}
+
+
+
+.errorNombre {
+    font-size: small;
+    color: red;
+}
+
+.errorInput {
+    background-color: rgb(225, 101, 149);
+    border: 2px solid red;
+}
+
+.correctoInput {
+    background-color: rgb(184, 232, 177);
+    border: 2px solid rgb(30, 255, 0);
+}
+
+.xmarkErrorNombre {
+    color: red;
+}
+
+.checkMarkNombre {
+    color: green;
+}
+
+.ocultar {
+    display: none;
+    visibility: hidden;
+}
+/*
